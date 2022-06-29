@@ -45,13 +45,10 @@ public class drawing_scanner {
 
             default:
                 System.out.println("Wrong number!");
-                wrongNumberAgainPlaying();
+                playingAgain();
         }
     }
 
-    private static void wrongNumberAgainPlaying() {
-        playingAgain();
-    }
 
     private static void playing() {
         int chosenNumber = chosenNumber();
@@ -76,16 +73,13 @@ public class drawing_scanner {
             case 9:
                 kindsOfShapes();
                 playing();
+                break;
             default:
                 System.out.println("Wrong number! Enter a number from 1 to 6!");
-                wrongNumber();
+                playing();
 
 
         }
-    }
-
-    private static void wrongNumber() {
-        playing();
     }
 
     private static int chosenNumber() {
@@ -94,46 +88,59 @@ public class drawing_scanner {
     }
 
     static int loadingNumber() {
+
         return scanner.nextInt();
     }
 
-    static int loadingCharacter() {
+    static char loadingCharacter() {
+
         return scanner.next().charAt(0);
     }
 
-    private static int paintingXmanSign() {
-        return 0;
-    }
-
-    private static void paintingChristmasTree() {
+    private static void paintingXmanSign() {
         System.out.println("Enter a character:");
-        char c = (char) loadingCharacter();
-        System.out.println("Enter a high:");
+        char c = loadingCharacter();
+        System.out.println("Enter a high of X-sign:");
         int a = loadingNumber();
 
         for (int i = 1; i <= a; i++) {
-            if (a % 2 == 0) {
-                for (int j = 1; j <= 2 * a; j++) {
-                    System.out.print(c + " ");
-
+            for (int j = 1; j <= i; j++) {
+                if (i == j) {
+                    System.out.print(c);
+                } else {
+                    System.out.print(" ");
                 }
-            }
-            if (a % 2 != 0) {
-                for (int j = 1; j <= (2 * a) - 1; j++) {
-                    System.out.print(c + " ");
-
-                }
-
             }
             System.out.println(" ");
         }
+    }
 
+
+    private static void paintingChristmasTree() {
+        System.out.println("Enter a character:");
+        char c = loadingCharacter();
+        System.out.println("Enter a high of tree:");
+        int a = loadingNumber();
+
+        for (int i = 0; i < a; i++) {
+            String result = "";
+            for (int j = 0; j < a - 1 - i; j++) {
+                result += " ";
+            }
+            int d = 1 + 2 * i;
+            for (int j = 0; j < d; j++) {
+                result += c;
+
+            }
+            System.out.println(result);
+
+        }
     }
 
 
     private static void paintingTriangel() {
         System.out.println("Enter a character:");
-        char c = (char) loadingCharacter();
+        char c = loadingCharacter();
         System.out.println("Enter a length of side:");
         int a = loadingNumber();
 
@@ -150,7 +157,7 @@ public class drawing_scanner {
 
     private static void paintingEmptyRectangle() {
         System.out.println("Enter a character:");
-        char c = (char) loadingCharacter();
+        char c = loadingCharacter();
         System.out.println("Enter a length of first side:");
         int a = loadingNumber();
         System.out.println("Enter a length of second side:");
@@ -173,9 +180,9 @@ public class drawing_scanner {
 
     private static void paintingChessBoardMethod() {
         System.out.println("Enter a first character:");
-        char a = (char) loadingCharacter();
+        char a = loadingCharacter();
         System.out.println("Enter a second character");
-        char b = (char) loadingCharacter();
+        char b = loadingCharacter();
         System.out.println("Enter a length of side:");
         int i = loadingNumber();
         for (int j = 0; j < i; j++) {
@@ -205,7 +212,7 @@ public class drawing_scanner {
 
     private static void paintingRectangleMethod() {
         System.out.println("Enter a character:");
-        char a = (char) loadingCharacter();
+        char a = loadingCharacter();
         System.out.println("Enter a length of first side:");
         int b = loadingNumber();
         System.out.println("Enter a length of second side:");
